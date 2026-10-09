@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Shield - About</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #020b1a;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .my-navbar {
+            height: 80px;
+            border-bottom: 1px solid #008cff;
+            padding: 0 35px;
+        }
+
+        .menu {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            width: 40%;
+        }
+
+        .logo i {
+            font-size: 45px;
+            color: #00aaff;
+            margin-right: 15px;
+        }
+
+        .logo-text h2 {
+            color: #00aaff;
+            font-size: 24px;
+        }
+
+        .logo-text small {
+            color: white;
+            font-size: 12px;
+        }
+
+        .nav-links {
+            width: 60%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 12px 18px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            border: 1px solid #008cff;
+            color: #00bfff;
+        }
+
+        .moon {
+            font-size: 22px;
+            color: white;
+        }
+
+        /* ================= MAIN ================= */
+
+        .about-box {
+            margin: 35px 30px;
+            padding: 45px 35px;
+            border: 1px solid #087ee8;
+            border-radius: 20px;
+            background: #031126;
+        }
+
+        /* ================= ABOUT TOP ================= */
+
+        .about-top {
+            display: flex;
+            align-items: center;
+            min-height: 330px;
+        }
+
+        .about-content {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .about-content h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-content h1 span {
+            color: #00aaff;
+        }
+
+        .line {
+            width: 110px;
+            height: 5px;
+            background: #00aaff;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .about-content p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            width: 50%;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 90%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            border-top: 1px solid #087ee8;
+            margin-top: 25px;
+            padding-top: 30px;
+
+            display: flex;
+            gap: 30px;
+        }
+
+        .card {
+            width: 33.33%;
+            min-height: 200px;
+
+            border: 1px solid #087ee8;
+            border-radius: 16px;
+
+            padding: 25px;
+
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+
+            background: #04152d;
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #00aaff;
+            margin-top: 5px;
+        }
+
+        .card h2 {
+            color: #00aaff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .card:hover {
+            border-color: #00d9ff;
+            box-shadow: 0 0 15px #006eff;
+        }
+
+        /* ================= MISSION ================= */
+
+        .mission {
+            margin-top: 25px;
+
+            border: 1px solid #087ee8;
+            border-radius: 16px;
+
+            padding: 25px 40px;
+
+            display: flex;
+            align-items: center;
+            gap: 35px;
+
+            background: #031633;
+        }
+
+        .mission i {
+            font-size: 65px;
+            color: #00aaff;
+        }
+
+        .mission h2 {
+            color: #00aaff;
+            margin-bottom: 10px;
+        }
+
+        .mission p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* ================= BOTTOM ================= */
+
+        .bottom-text {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #087ee8;
+        }
+
+        .bottom-text i {
+            color: #00aaff;
+            font-size: 25px;
+        }
+
+        .bottom-text h2 {
+            color: #00aaff;
+            margin-top: 10px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 25px;
+            padding: 18px 40px;
+            border-top: 1px solid #087ee8;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #00aaff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+      <nav class="my-navbar">
+        <div class="menu">
+           <div class="logo">
+               <i class="fa-solid fa-shield-halved"></i>
+                <div class="logo-text">
+                    <h2>CYBER SHIELD</h2>
+                    <small>STRONGER PASSWORDS, SAFER WORLD</small>
+                </div>
+            </div>
+ <div class="nav-links">
+   <a href="index.html">Home</a>
+   <a href="p2.html">Password Checker</a>
+   <a href="p3.html">Tips</a>
+  <a href="p4.html" class="active"> About </a>
+  <a href="p5.html">Contact</a>
+<i class="fa-solid fa-moon moon"></i>     
+</div>
+        </div>
+</nav>
+<!-- MAIN -->
+  <div class="about-box">
+ <!-- ABOUT TOP -->
+  <div class="about-top">
+                  <div class="about-content">
+
+                <h1>
+                    ABOUT <span>CYBER SHIELD</span>
+                </h1>
+ <div class="line"></div>
+
+                <p>
+                    Cyber Shield is an educational platform dedicated
+                    to helping users understand password security and
+                    improve their online safety.
+                </p>
+
+                <p>
+                    Our mission is to make cybersecurity simple,
+                    practical and easy to understand for everyone.
+                </p>
+            
+            </div>
+<div class="about-image">
+ <!-- box image -->
+                <img src="about.png"
+                     alt="Cyber Security">
+
+            </div>
+
+        </div>
+
+
+<!-- CARDS -->
+<div class="cards">
+ <div class="card">
+ <i class="fa-solid fa-lock"></i>
+  <div>
+                    <h2>PASSWORD SECURITY</h2>
+
+                    <p>
+                        Learn how to create strong and unique
+                        passwords and keep your accounts safe
+                        from hackers.
+                    </p>
+ </div>
+</div>
+<div class="card">
+ <i class="fa-solid fa-shield-halved"></i>
+<div>
+                    <h2>CYBER AWARENESS</h2>
+                    <p>
+                        Understand common online threats like
+                        phishing, malware and scams and how to
+                        protect yourself.
+                    </p>
+                </div>
+</div>
+<div class="card">
+ <i class="fa-regular fa-lightbulb"></i>
+  <div>
+         <h2>SECURITY EDUCATION</h2>
+
+               <p>
+                        Get simple tips and practical knowledge
+                        to improve your digital security and stay
+                        one step ahead.
+                    </p>
+                </div>
+</div>
+</div>
+   <!-- MISSION -->
+
+<div class="mission">
+<i class="fa-solid fa-bullseye"></i>
+ <div>
+    <h2>OUR MISSION</h2>
+            <p>
+                    To promote better password habits and increase
+                    awareness about digital security through simple
+                    and useful guidance.
+                </p>
+</div>
+ </div>
+  <!-- BOTTOM -->
+ <div class="bottom-text">
+  <i class="fa-solid fa-shield-halved"></i>
+            <h2>
+                Stay Safe. Stay Secure. Stay Aware.
+            </h2>
+        </div>
+     </div>
+
+
+    <!-- FOOTER -->
+ <footer>
+    <span>
+            © 2024 Cyber Shield. All rights reserved.
+        </span>
+ <span>
+            Stay Safe, Stay Secure
+        </span>
+
+    </footer>
+
+</body>
+</html>

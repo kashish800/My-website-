@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>password checker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script>
+     function showpass(){
+        let password=document.getElementById('password');
+        if(password.type==="password"){
+            password.type="text";
+        }
+         else{
+        password.type="password";
+        }
+ }
+ function checkpwstr(){
+        let password=document.getElementById("password").value;
+        let score=0;
+        if(password.length>=8){
+            score++;
+         }
+         if(/[A-Z]/.test(password)){
+            score++;
+           }
+         if(/[a-z]/.test(password)){
+            score++;
+           }
+         if(/[0-9]/.test(password)){
+            score++;
+           }
+         if(/[^A-Za-z0-9]/.test(password)){
+            score++;
+           }
+        let strength=document.getElementById("strengthtext");
+        let progress=document.getElementById("strengthprogress");
+        let massage=document.getElementById("strenghtmassage");
+
+        if(password.length==0){
+            strength.innerHTML= "NOT CHECKED";
+            progress.style.width="0%";
+            massage.innerHTML= "Enter a password to check its strength.";
+        }
+            else if(score<=2){
+            strength.innerHTML="WEAK";
+            progress.style.width="25%";
+            massage.innerHTML="Your Password is weak.";
+             }
+            else if(score==3){
+            strength.innerHTML="MEDIUM";
+            progress.style.width="50%";
+            massage.innerHTML="Your Password is medium.";
+            }
+             else if(score==4){
+            strength.innerHTML="STRONG";
+            progress.style.width="75%";
+            massage.innerHTML="Great! Your Password is strong.";
+            }
+        else {
+            strength.innerHTML=" VERY STRONG";
+            progress.style.width="100%";
+            massage.innerHTML=" Excellent! Your Password is very strong.";
+        }
+
+        // 3.password requriments
+        let length=document.getElementById("length");
+        let upp=document.getElementById("upp");
+        let low=document.getElementById("low");
+        let num=document.getElementById("num");
+        let sep=document.getElementById("sep");
+
+        if(password.length>=8){
+            length.innerHTML=" &#10004;At least 8 characters "
+        }
+        else{
+            length.innerHTML=" &#10008; At least 8 characters"
+        }
+        if(/[A-Z]/.test(password)){
+            upp.innerHTML="&#10004;  At least one uppercase letter (A-Z) "
+        }
+        else{
+            upp.innerHTML="&#10008;  At least one uppercase letter (A-Z) "
+        }
+         if(/[a-z]/.test(password)){
+             low.innerHTML="&#10004;At least one lowercase letter (a-z) "
+         }
+         else{
+            low.innerHTML="&#10008;At least one lowercase letter (a-z) "
+         }
+         if(/[0-9]/.test(password)){
+             num.innerHTML="&#10004;At least one number (0-9) "
+         }
+         else{
+            num.innerHTML="&#10008;At least one number (0-9) "
+         }
+         if(/[^A-Za-z0-9]/.test(password)){
+             sep.innerHTML="&#10004;At least one special character (!@#$%) "
+         }
+         else{
+             sep.innerHTML="&#10008;At least one special character (!@#$%) "
+        }
+// let progress = document.getElementById("strengthmassage");
+
+// if (password.length === 0) {
+//  progress.style.width = "0%";
+
+// }
+// else if (score <= 2) {
+//      progress.style.width = "25%";
+//      }
+// else if (score === 3) {
+//    progress.style.width = "50%";
+// }
+// else if (score === 4) {
+//     progress.style.width = "75%";
+// }
+// else {
+//     progress.style.width = "100%";
+// }
+}
+
+
+</script>
+<style>
+    body{
+         margin: 0;
+        padding: 0; 
+        background-color: #020b1c;
+         color: white; 
+         font-family: Arial, Helvetica, sans-serif; 
+    }
+    .card-body{
+        padding: 4px;
+    }
+    .card{
+        background-color: #020b18;
+        color: white;
+        border: 1px solid #29445c;
+        border-radius: 10px;
+        padding:20px ;
+        box-sizing: border-box;
+        margin: 10px;
+    }
+     .strength-result{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .shield-icon img{
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+    }
+    .strength-content{
+        flex: 1;
+    }
+    .strength-bar{
+        width: 330px;
+        height: 13px;
+        background-color: #263746;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    #strengthprogress{
+        width: 0%;
+        height: 100%;
+        background: #32e65a;
+        border-radius: 10px;
+        transition: width 0.4s ease;
+    }
+    .security-tip{
+        display: flex;
+         align-items: top; 
+         justify-content: space-between; 
+    }
+    .heading-box{
+        padding: 10px;
+        border-radius: 10px;
+        border:1px solid #29445c; 
+        margin: 5px;
+    }
+    ul{
+      list-style: none;        
+    }
+    
+    .important-content{
+        left: 60%;
+    }
+    
+    .form-control{
+        display: inline-block;
+        width: 300px;
+    }
+    button{
+        display: inline-block;
+    }
+    
+    .eye-btn{
+        width: 42px;
+        height: 40px;
+        position: absolute;
+        margin-left: 6px;
+        padding: 0;
+        border: 2px solid #2b78b8;
+        border-radius: 6px;
+        background-color:#031126;
+        color: #1269a3;
+    }
+   .eye-btn:hover{
+    color: #1269a3;
+    box-shadow:0 0 10px #008cff; 
+
+   }
+    
+    .my-navbar {
+    margin-right: auto;
+    width: 100%;
+    padding: 15px 35px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+
+    /* border: 1px solid #087fc1; */
+    border-radius: 15px;
+     background: #020b1c;
+}
+  
+
+.logo {
+    font-size: 22px;
+    color: #00eaff;
+    font-weight: bold;
+    margin-right: auto;
+
+}
+
+ .logo p {
+    display: block;
+    font-size: 10px;
+    color: white;
+    margin-left: 35px;
+} 
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    
+}
+
+.menu a:hover,.menu .active  {
+   
+    border: 1px solid #00bfff;
+    color: #00c8ff;
+    box-shadow: 0 0 10px #008cff;
+    border-radius: 8px;
+}
+input{
+    background-color: #031126;
+    
+}
+.form-control{
+    background-color: #031126 !important;
+    color: white !important;
+    border-color: #00bfff;
+}
+input:hover{
+  border-color: #00bfff;
+  box-shadow: 0 0 10px #008cff;
+}
+h2{
+    /* color:#20E6F3; */
+     color: #00aaff;
+    text-shadow: 0 0 8px rgba(32, 230 243, 0.25);
+}
+ h1 span{
+      color: #F5B82E;
+}
+</style>
+</head>
+<body>
+ <!-- navbar -->
+    <nav class="my-navbar">
+         <div class="menu">
+             <div class="logo">
+                    <div class="htop"><i class="fa-solid fa-lock"></i>
+                        SecurePass</div>
+                        <p id="top">STRONGER PASSWORDS, SAFER WORLD</p>
+            </div>
+            
+                <a href="./index.html">Home</a>
+                <a href="p2.html" class="active"> Password Checker</a>
+                <a href="p3.html" >Tips</a>
+                <a href="p4.html">About</a>
+                <a href="p5.html">Contact</a>
+                <span>☾</span>
+            
+            </div>
+        </nav>
+<div class="container-fuild ">
+    <div class="row">
+        <div class=" col-3">
+                <img src="./left_img-removebg-preview.png" alt="" width="250px" height="200px">
+            </div>
+                <div class=" col-4">
+                   <h1>Check Your 
+                     <span>Password Strength</span></h1>
+                        <p>Test your password and find out how storng it is.
+                            Our password checker helps you understand basic password security
+                            requirements.
+                        </p>
+                 </div>
+                <div class=" col-2">
+                        <img src="./right_image-removebg-preview.png" alt="" width="450px" height="200px">
+
+                </div>
+  </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        
+          <label for="password"><h2>1. Enter Your Password</h2> </label><br>
+            <input type="password"  name="password" id="password" placeholder="Enter Your Password" oninput="checkpwstr()" class="form-control" >
+        <button type="button" onclick="showpass()" class="eye-btn"><i class="fa-solid fa-eye"></i></button><br><br>
+        <p>Type your password in the field above to check its Strength. </p>  
+    
+</div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-body">
+                    <section class="strength-section">
+                            <h2>2. PASSWORD STRENGTH</h2>
+                            <div class="strength-result">
+                                <div class="shield-icon">
+                                    <!-- <!-- //ima>
+                                         -->
+                                         <img src="./sheild png.webp" alt="">
+                                        </div>
+                                       
+                    
+                                 <div class=" strength-content"> 
+                                    <p>Your Password is</p>
+                                    <h2 id="strengthtext">NOT CHECKED</h2>
+                                     <!-- strength bar -->
+                                    <div class="strength-bar">
+                                        <div id="strengthprogress"></div>
+                                     </div><br>
+                                        <p id="strenghtmassage">Enter a password to check its strength.</p>
+                                    </div>
+                                    </div><br><br><br>
+
+                                    <section class="requirements-section">
+                                        
+                                          <h2>3. PASSWORD REQUIREMENTS</h2>
+                                        <p>
+                                          A strong password should meet the following requirements:
+                                            </p>
+                                            <ul class="requirements-list">
+                                                <div class="heading-box">
+                                                <li id="length">   At least 8 characters</li>
+                                            </div>
+                                            <div class="heading-box">
+                                                <li id="upp">   At least one uppercase letter (A-Z)</li>
+                                            </div>
+                                            <div class="heading-box">
+                                                <li id="low">  At least one lowercase letter (a-z)</li>
+                                            </div>
+                                            <div class="heading-box">
+                                               <li id="num">  At least one number (0-9)</li>
+                                            </div>
+                                            <div class="heading-box">
+                                               <li id="sep">  At least one special character (!@#$%)</li>
+                                            </div>
+                                    </ul>
+                                        
+                                        </section>
+                                    
+                        </section>
+                    
+            </div>
+
+        </div>
+
+    </div>
+<div class="col-5">
+    <div class="card">
+        <div class="card-body">
+        <h2>ABOUT PASSWORD STRENGTH</h2>
+        <div class="about-item">
+                <h6> <i class="fa-solid fa-shield-halved"></i>  Very Strong </h6>
+                 <p>  Your password is very strong.<br>Excellent! </p>
+    </div>
+    <div class="about-item">
+            <h6> <i class="fa-solid fa-shield-halved"></i>   Strong <br>
+               Your password is strong <br>
+               and secure.</h6>
+</div>
+    
+    <div class="about-item">
+            <h6> <i class="fa-solid fa-shield-halved"></i>   Medium <br>
+               Your password is Medium <br>
+               Try to make it stronger.</h6>
+</div>
+<div class="about-item">
+        <h6> <i class="fa-solid fa-shield-halved"></i>   Weak <br>
+           Your password is Weak <br>
+           Easy to guess.</h6>
+</div>
+
+</div>
+</div>
+<div class="card">
+        <div class="security-tip">
+       <div class="security-content">
+            <h2><i class="fa-solid fa-shield-halved"></i> SECURITY TIP</h2>
+                    <p>
+                         Never use personal information like your name,
+                         birthday, phone number or address in your password.
+                    </p>
+                </div>
+            
+                <div class="security-icon">
+                    <img src="./se tip.jpg" alt="" width="250px" height="120px" >
+                </div>
+            
+            </div>
+          
+</div>
+
+
+
+
+    
+
+
+
+    
+</body>
+</html>
