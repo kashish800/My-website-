@@ -1,470 +1,958 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-   
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Password Checker</title>
 
-  
-}
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>password checker</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<script>
-     function showpass(){
-        let password=document.getElementById('password');
-        if(password.type==="password"){
-            password.type="text";
-        }
-         else{
-        password.type="password";
-        }
- }
- function checkpwstr(){
-        let password=document.getElementById("password").value;
-        let score=0;
-        if(password.length>=8){
-            score++;
-         }
-         if(/[A-Z]/.test(password)){
-            score++;
-           }
-         if(/[a-z]/.test(password)){
-            score++;
-           }
-         if(/[0-9]/.test(password)){
-            score++;
-           }
-         if(/[^A-Za-z0-9]/.test(password)){
-            score++;
-           }
-        let strength=document.getElementById("strengthtext");
-        let progress=document.getElementById("strengthprogress");
-        let massage=document.getElementById("strenghtmassage");
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        if(password.length==0){
-            strength.innerHTML= "NOT CHECKED";
-            progress.style.width="0%";
-            massage.innerHTML= "Enter a password to check its strength.";
-        }
-            else if(score<=2){
-            strength.innerHTML="WEAK";
-            progress.style.width="25%";
-            massage.innerHTML="Your Password is weak.";
-             }
-            else if(score==3){
-            strength.innerHTML="MEDIUM";
-            progress.style.width="50%";
-            massage.innerHTML="Your Password is medium.";
-            }
-             else if(score==4){
-            strength.innerHTML="STRONG";
-            progress.style.width="75%";
-            massage.innerHTML="Great! Your Password is strong.";
-            }
-        else {
-            strength.innerHTML=" VERY STRONG";
-            progress.style.width="100%";
-            massage.innerHTML=" Excellent! Your Password is very strong.";
-        }
-
-        // 3.password requriments
-        let length=document.getElementById("length");
-        let upp=document.getElementById("upp");
-        let low=document.getElementById("low");
-        let num=document.getElementById("num");
-        let sep=document.getElementById("sep");
-
-        if(password.length>=8){
-            length.innerHTML=" &#10004;At least 8 characters "
-        }
-        else{
-            length.innerHTML=" &#10008; At least 8 characters"
-        }
-        if(/[A-Z]/.test(password)){
-            upp.innerHTML="&#10004;  At least one uppercase letter (A-Z) "
-        }
-        else{
-            upp.innerHTML="&#10008;  At least one uppercase letter (A-Z) "
-        }
-         if(/[a-z]/.test(password)){
-             low.innerHTML="&#10004;At least one lowercase letter (a-z) "
-         }
-         else{
-            low.innerHTML="&#10008;At least one lowercase letter (a-z) "
-         }
-         if(/[0-9]/.test(password)){
-             num.innerHTML="&#10004;At least one number (0-9) "
-         }
-         else{
-            num.innerHTML="&#10008;At least one number (0-9) "
-         }
-         if(/[^A-Za-z0-9]/.test(password)){
-             sep.innerHTML="&#10004;At least one special character (!@#$%) "
-         }
-         else{
-             sep.innerHTML="&#10008;At least one special character (!@#$%) "
-        }
-// let progress = document.getElementById("strengthmassage");
-
-// if (password.length === 0) {
-//  progress.style.width = "0%";
-
-// }
-// else if (score <= 2) {
-//      progress.style.width = "25%";
-//      }
-// else if (score === 3) {
-//    progress.style.width = "50%";
-// }
-// else if (score === 4) {
-//     progress.style.width = "75%";
-// }
-// else {
-//     progress.style.width = "100%";
-// }
-}
-
-
-</script>
 <style>
-    body{
-         margin: 0;
-        padding: 0; 
-        background-color: #020b1c;
-         color: white; 
-         font-family: Arial, Helvetica, sans-serif; 
-    }
-    .card-body{
-        padding: 4px;
-    }
-    @media screen and (max-width: 576px) {
-    body {
-        font-size: 14px;
-    }
-
-    .container {
-        width: 100%;
-    }
-    }
-    .card{
-        background-color: #020b18;
-        color: white;
-        border: 1px solid #29445c;
-        border-radius: 10px;
-        padding:20px ;
-        box-sizing: border-box;
-        margin: 10px;
-    }
-     .strength-result{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    .shield-icon img{
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-    }
-    .strength-content{
-        flex: 1;
-    }
-    .strength-bar{
-        width: 330px;
-        height: 13px;
-        background-color: #263746;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    #strengthprogress{
-        width: 0%;
-        height: 100%;
-        background: #32e65a;
-        border-radius: 10px;
-        transition: width 0.4s ease;
-    }
-    .security-tip{
-        display: flex;
-         align-items: top; 
-         justify-content: space-between; 
-    }
-    .heading-box{
-        padding: 10px;
-        border-radius: 10px;
-        border:1px solid #29445c; 
-        margin: 5px;
-    }
-    ul{
-      list-style: none;        
-    }
-    
-    .important-content{
-        left: 60%;
-    }
-    
-    .form-control{
-        display: inline-block;
-        width: 300px;
-    }
-    button{
-        display: inline-block;
-    }
-    
-    .eye-btn{
-        width: 42px;
-        height: 40px;
-        position: absolute;
-        margin-left: 6px;
-        padding: 0;
-        border: 2px solid #2b78b8;
-        border-radius: 6px;
-        background-color:#031126;
-        color: #1269a3;
-    }
-   .eye-btn:hover{
-    color: #1269a3;
-    box-shadow:0 0 10px #008cff; 
-
-   }
-    
-    .my-navbar {
-    margin-right: auto;
-    width: 100%;
-    padding: 15px 35px;
-    border: none;
-    box-shadow: none;
-    outline: none;
-
-    /* border: 1px solid #087fc1; */
-    border-radius: 15px;
-     background: #020b1c;
+* {
+    box-sizing: border-box;
 }
-  
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: #020b1c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h1 span {
+    color: #F5B82E;
+}
+
+h2 {
+    color: #00aaff;
+    text-shadow: 0 0 8px rgba(32, 230, 243, 0.25);
+    overflow-wrap: anywhere;
+}
+
+/* NAVBAR */
+
+.my-navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background: #020b1c;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
 
 .logo {
     font-size: 22px;
     color: #00eaff;
     font-weight: bold;
     margin-right: auto;
-
+    flex-shrink: 0;
 }
 
- .logo p {
-    display: block;
+.logo p {
     font-size: 10px;
     color: white;
-    margin-left: 35px;
-} 
-
-.menu {
-    display: flex;
-    align-items: center;
-    gap: 35px;
-    
+    margin: 0 0 0 35px;
+    line-height: 1.4;
 }
 
 .menu a {
+    display: inline-block;
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: 0.2s ease;
 }
 
-.menu a:hover,.menu .active  {
-   
-    border: 1px solid #00bfff;
+.menu a:hover,
+.menu a.active {
+    border-color: #00bfff;
     color: #00c8ff;
     box-shadow: 0 0 10px #008cff;
-    border-radius: 8px;
 }
-input{
-    background-color: #031126;
-    
+
+.menu > span {
+    padding: 8px;
+    flex-shrink: 0;
 }
-.form-control{
-    background-color: #031126 !important;
+
+/* INTRO SECTION */
+
+.intro-section {
+    padding: 25px 15px;
+}
+
+.intro-section .row {
+    align-items: center;
+}
+
+.intro-section h1 {
+    font-size: 34px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.intro-section p {
+    overflow-wrap: anywhere;
+}
+
+.intro-image {
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.right-image {
+    width: 100%;
+    max-width: 450px;
+    max-height: 280px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* CARDS */
+
+.card {
+    width: 100%;
+    min-width: 0;
+    background: #020b18;
+    color: white;
+    border: 1px solid #29445c;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.card-body {
+    padding: 4px;
+    min-width: 0;
+    width: 100%;
+}
+
+.container-fluid {
+    min-width: 0;
+}
+
+.row > [class*="col-"] {
+    min-width: 0;
+}
+
+/* PASSWORD INPUT */
+
+.password-input-group {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    max-width: 420px;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-control {
+    background: #031126 !important;
     color: white !important;
+    border: 1px solid #00bfff;
+    border-radius: 6px;
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 10px 12px;
+}
+
+.form-control::placeholder {
+    color: #b6c8d8;
+    opacity: 1;
+}
+
+.form-control:focus {
     border-color: #00bfff;
+    box-shadow: 0 0 10px #008cff;
 }
-input:hover{
-  border-color: #00bfff;
-  box-shadow: 0 0 10px #008cff;
+
+.eye-btn {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #2b78b8;
+    border-radius: 6px;
+    background: #031126;
+    color: #00aaff;
+    cursor: pointer;
 }
-h2{
-    /* color:#20E6F3; */
-     color: #00aaff;
-    text-shadow: 0 0 8px rgba(32, 230 243, 0.25);
+
+.eye-btn:hover,
+.eye-btn:focus {
+    color: #00eaff;
+    box-shadow: 0 0 10px #008cff;
+    outline: none;
 }
- h1 span{
-      color: #F5B82E;
+
+/* PASSWORD STRENGTH */
+
+.strength-result {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    min-width: 0;
+}
+
+.shield-icon {
+    flex: 0 0 120px;
+}
+
+.shield-icon img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.strength-content {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+#strengthtext {
+    font-size: 25px;
+    overflow-wrap: anywhere;
+}
+
+.strength-bar {
+    width: 100%;
+    max-width: 330px;
+    height: 13px;
+    background: #263746;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#strengthprogress {
+    width: 0%;
+    height: 100%;
+    background: #32e65a;
+    border-radius: 10px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+#strenghtmassage {
+    overflow-wrap: anywhere;
+}
+
+/* REQUIREMENTS */
+
+.requirements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.heading-box {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #29445c;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    line-height: 1.6;
+}
+
+/* ABOUT SECTION */
+
+.about-item {
+    border-bottom: 1px solid #29445c;
+    padding: 12px 0;
+}
+
+.about-item:last-child {
+    border-bottom: none;
+}
+
+.about-item h6 {
+    line-height: 1.6;
+}
+
+.about-item i {
+    color: #00c8ff;
+}
+
+/* SECURITY TIP */
+
+.security-tip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    min-width: 0;
+}
+
+.security-content {
+    flex: 1 1 55%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.security-icon {
+    flex: 0 1 45%;
+    min-width: 0;
+}
+
+.security-icon img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* MEDIUM LAPTOPS AND TABLETS */
+
+@media screen and (max-width: 991px) {
+    .my-navbar {
+        padding: 15px;
+    }
+
+    .menu {
+        gap: 6px;
+    }
+
+    .menu a {
+        padding: 8px 9px;
+        font-size: 14px;
+    }
+
+    .intro-section h1 {
+        font-size: 28px;
+    }
+
+    .strength-result {
+        gap: 15px;
+    }
+
+    .shield-icon {
+        flex-basis: 90px;
+    }
+
+    .shield-icon img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+}
+
+/* MOBILE AND SMALL TABLETS */
+
+@media screen and (max-width: 767px) {
+    .my-navbar {
+        padding: 12px 8px;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .logo {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 10px;
+    }
+
+    .logo p {
+        margin: 4px 0 0;
+    }
+
+    .menu a {
+        font-size: 13px;
+        padding: 7px 9px;
+    }
+
+    .menu > span {
+        padding: 5px;
+    }
+
+    .intro-section {
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    .intro-section h1 {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    .intro-image,
+    .right-image {
+        width: 100%;
+        max-width: 180px;
+        max-height: 150px;
+        margin: 0 auto 15px;
+    }
+
+    .intro-section .row > div {
+        margin-bottom: 8px;
+    }
+
+    .card {
+        padding: 16px;
+        margin: 8px 0;
+    }
+
+    .card-body {
+        padding: 2px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .strength-result {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .shield-icon {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .shield-icon img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .strength-content {
+        width: 100%;
+    }
+
+    .strength-bar {
+        max-width: 100%;
+    }
+
+    #strengthtext {
+        font-size: 23px;
+    }
+
+    .heading-box {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .security-tip {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .security-content,
+    .security-icon {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .security-icon img {
+        max-width: 220px;
+    }
+}
+
+/* SMALL MOBILE PHONES */
+
+@media screen and (max-width: 380px) {
+    .my-navbar {
+        padding: 10px 5px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo p {
+        font-size: 9px;
+    }
+
+    .menu {
+        gap: 3px;
+    }
+
+    .menu a {
+        font-size: 11px;
+        padding: 6px 5px;
+    }
+
+    .menu > span {
+        font-size: 13px;
+        padding: 3px;
+    }
+
+    .intro-section h1 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .password-input-group {
+        gap: 5px;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .eye-btn {
+        flex-basis: 40px;
+        width: 40px;
+        height: 42px;
+    }
+
+    #strengthtext {
+        font-size: 21px;
+    }
+
+    .heading-box {
+        font-size: 13px;
+        padding: 8px;
+    }
 }
 </style>
 </head>
+
 <body>
- <!-- navbar -->
-    <nav class="my-navbar">
-         <div class="menu">
-             <div class="logo">
-                    <div class="htop"><i class="fa-solid fa-lock"></i>
-                        SecurePass</div>
-                        <p id="top">STRONGER PASSWORDS, SAFER WORLD</p>
+
+<!-- NAVBAR -->
+
+<nav class="my-navbar">
+    <div class="menu">
+
+        <div class="logo">
+            <div class="htop">
+                <i class="fa-solid fa-lock"></i> SecurePass
             </div>
-            
-                <a href="./index.html">Home</a>
-                <a href="p2.html" class="active"> Password Checker</a>
-                <a href="p3.html" >Tips</a>
-                <a href="p4.html">About</a>
-                <a href="p5.html">Contact</a>
-                <span>☾</span>
-            
-            </div>
-        </nav>
-<div class="container-fuild ">
+            <p id="top">STRONGER PASSWORDS, SAFER WORLD</p>
+        </div>
+
+        <a href="./index.html">Home</a>
+        <a href="p2.html" class="active">Password Checker</a>
+        <a href="p3.html">Tips</a>
+        <a href="p4.html">About</a>
+        <a href="p5.html">Contact</a>
+        <span aria-hidden="true">☾</span>
+
+    </div>
+</nav>
+
+<!-- INTRO SECTION -->
+
+<div class="container-fluid intro-section">
     <div class="row">
-        <div class=" col-3">
-                <img src="./left_img-removebg-preview.png" alt="" width="250px" height="200px">
+
+        <div class="col-12 col-md-3 text-center">
+            <img src="./left_img-removebg-preview.png"
+                 alt="Password security"
+                 class="intro-image">
+        </div>
+
+        <div class="col-12 col-md-5">
+            <h1>Check Your <span>Password Strength</span></h1>
+
+            <p>
+                Test your password and find out how storng it is.
+                Our password checker helps you understand basic password
+                security requirements.
+            </p>
+        </div>
+
+        <div class="col-12 col-md-4 text-center">
+            <img src="./right_image-removebg-preview.png"
+                 alt="Password protection"
+                 class="right-image">
+        </div>
+
+    </div>
+</div>
+
+<!-- PASSWORD INPUT CARD -->
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+
+            <label for="password">
+                <h2>1. Enter Your Password</h2>
+            </label>
+
+            <div class="password-input-group">
+
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter Your Password"
+                    oninput="checkpwstr()"
+                    class="form-control"
+                    autocomplete="new-password"
+                    aria-describedby="strenghtmassage">
+
+                <button
+                    type="button"
+                    onclick="showpass()"
+                    class="eye-btn"
+                    aria-label="Show or hide password">
+
+                    <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                </button>
+
             </div>
-                <div class=" col-4">
-                   <h1>Check Your 
-                     <span>Password Strength</span></h1>
-                        <p>Test your password and find out how storng it is.
-                            Our password checker helps you understand basic password security
-                            requirements.
-                        </p>
-                 </div>
-                <div class=" col-2">
-                        <img src="./right_image-removebg-preview.png" alt="" width="450px" height="200px">
+
+            <br>
+
+            <p>
+                Type your password in the field above to check its Strength.
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<!-- STRENGTH AND ABOUT SECTION -->
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- LEFT SECTION -->
+
+        <div class="col-12 col-lg-7">
+            <div class="card">
+                <div class="card-body">
+
+                    <section class="strength-section">
+
+                        <h2>2. PASSWORD STRENGTH</h2>
+
+                        <div class="strength-result">
+
+                            <div class="shield-icon">
+                                <img src="./sheild png.webp"
+                                     alt="Security shield">
+                            </div>
+
+                            <div class="strength-content">
+
+                                <p>Your Password is</p>
+
+                                <h2 id="strengthtext">NOT CHECKED</h2>
+
+                                <div
+                                    class="strength-bar"
+                                    role="progressbar"
+                                    aria-label="Password strength"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="0">
+
+                                    <div id="strengthprogress"></div>
+
+                                </div>
+
+                                <br>
+
+                                <p id="strenghtmassage" aria-live="polite">
+                                    Enter a password to check its strength.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <section class="requirements-section">
+
+                            <h2>3. PASSWORD REQUIREMENTS</h2>
+
+                            <p>
+                                A strong password should meet the following
+                                requirements:
+                            </p>
+
+                            <ul class="requirements-list">
+
+                                <li class="heading-box" id="length">
+                                    At least 8 characters
+                                </li>
+
+                                <li class="heading-box" id="upp">
+                                    At least one uppercase letter (A-Z)
+                                </li>
+
+                                <li class="heading-box" id="low">
+                                    At least one lowercase letter (a-z)
+                                </li>
+
+                                <li class="heading-box" id="num">
+                                    At least one number (0-9)
+                                </li>
+
+                                <li class="heading-box" id="sep">
+                                    At least one special character (!@#$%)
+                                </li>
+
+                            </ul>
+
+                        </section>
+
+                    </section>
 
                 </div>
-  </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        
-          <label for="password"><h2>1. Enter Your Password</h2> </label><br>
-            <input type="password"  name="password" id="password" placeholder="Enter Your Password" oninput="checkpwstr()" class="form-control" >
-        <button type="button" onclick="showpass()" class="eye-btn"><i class="fa-solid fa-eye"></i></button><br><br>
-        <p>Type your password in the field above to check its Strength. </p>  
-    
-</div>
+            </div>
+        </div>
 
+        <!-- RIGHT SECTION -->
 
-</div>
+        <div class="col-12 col-lg-5">
 
-<div class="row">
-    <div class="col-7">
-        <div class="card">
-            <div class="card-body">
-                    <section class="strength-section">
-                            <h2>2. PASSWORD STRENGTH</h2>
-                            <div class="strength-result">
-                                <div class="shield-icon">
-                                    <!-- <!-- //ima>
-                                         -->
-                                         <img src="./sheild png.webp" alt="">
-                                        </div>
-                                       
-                    
-                                 <div class=" strength-content"> 
-                                    <p>Your Password is</p>
-                                    <h2 id="strengthtext">NOT CHECKED</h2>
-                                     <!-- strength bar -->
-                                    <div class="strength-bar">
-                                        <div id="strengthprogress"></div>
-                                     </div><br>
-                                        <p id="strenghtmassage">Enter a password to check its strength.</p>
-                                    </div>
-                                    </div><br><br><br>
+            <div class="card">
+                <div class="card-body">
 
-                                    <section class="requirements-section">
-                                        
-                                          <h2>3. PASSWORD REQUIREMENTS</h2>
-                                        <p>
-                                          A strong password should meet the following requirements:
-                                            </p>
-                                            <ul class="requirements-list">
-                                                <div class="heading-box">
-                                                <li id="length">   At least 8 characters</li>
-                                            </div>
-                                            <div class="heading-box">
-                                                <li id="upp">   At least one uppercase letter (A-Z)</li>
-                                            </div>
-                                            <div class="heading-box">
-                                                <li id="low">  At least one lowercase letter (a-z)</li>
-                                            </div>
-                                            <div class="heading-box">
-                                               <li id="num">  At least one number (0-9)</li>
-                                            </div>
-                                            <div class="heading-box">
-                                               <li id="sep">  At least one special character (!@#$%)</li>
-                                            </div>
-                                    </ul>
-                                        
-                                        </section>
-                                    
-                        </section>
-                    
+                    <h2>ABOUT PASSWORD STRENGTH</h2>
+
+                    <div class="about-item">
+                        <h6>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Very Strong
+                        </h6>
+                        <p>Your password is very strong.<br>Excellent!</p>
+                    </div>
+
+                    <div class="about-item">
+                        <h6>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Strong
+                        </h6>
+                        <p>Your password is strong and secure.</p>
+                    </div>
+
+                    <div class="about-item">
+                        <h6>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Medium
+                        </h6>
+                        <p>Your password is Medium. Try to make it stronger.</p>
+                    </div>
+
+                    <div class="about-item">
+                        <h6>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Weak
+                        </h6>
+                        <p>Your password is Weak. Easy to guess.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECURITY TIP -->
+
+            <div class="card">
+
+                <div class="security-tip">
+
+                    <div class="security-content">
+
+                        <h2>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            SECURITY TIP
+                        </h2>
+
+                        <p>
+                            Never use personal information like your name,
+                            birthday, phone number or address in your password.
+                        </p>
+
+                    </div>
+
+                    <div class="security-icon">
+                        <img src="./se tip.jpg"
+                             alt="Security tip">
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
-<div class="col-5">
-    <div class="card">
-        <div class="card-body">
-        <h2>ABOUT PASSWORD STRENGTH</h2>
-        <div class="about-item">
-                <h6> <i class="fa-solid fa-shield-halved"></i>  Very Strong </h6>
-                 <p>  Your password is very strong.<br>Excellent! </p>
-    </div>
-    <div class="about-item">
-            <h6> <i class="fa-solid fa-shield-halved"></i>   Strong <br>
-               Your password is strong <br>
-               and secure.</h6>
-</div>
-    
-    <div class="about-item">
-            <h6> <i class="fa-solid fa-shield-halved"></i>   Medium <br>
-               Your password is Medium <br>
-               Try to make it stronger.</h6>
-</div>
-<div class="about-item">
-        <h6> <i class="fa-solid fa-shield-halved"></i>   Weak <br>
-           Your password is Weak <br>
-           Easy to guess.</h6>
 </div>
 
-</div>
-</div>
-<div class="card">
-        <div class="security-tip">
-       <div class="security-content">
-            <h2><i class="fa-solid fa-shield-halved"></i> SECURITY TIP</h2>
-                    <p>
-                         Never use personal information like your name,
-                         birthday, phone number or address in your password.
-                    </p>
-                </div>
-            
-                <div class="security-icon">
-                    <img src="./se tip.jpg" alt="" width="250px" height="120px" >
-                </div>
-            
-            </div>
-          
-</div>
+<!-- JAVASCRIPT -->
 
+<script>
+function showpass() {
 
+    const password = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
 
+    if (password.type === "password") {
 
-    
+        password.type = "text";
+        eyeIcon.className = "fa-solid fa-eye-slash";
 
+    } else {
 
+        password.type = "password";
+        eyeIcon.className = "fa-solid fa-eye";
 
-    
+    }
+}
+
+function checkpwstr() {
+
+    const password = document.getElementById("password").value;
+
+    let score = 0;
+
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+
+    const strength = document.getElementById("strengthtext");
+    const progress = document.getElementById("strengthprogress");
+    const message = document.getElementById("strenghtmassage");
+    const progressBar = progress.parentElement;
+
+    let percentage = 0;
+    let color = "#263746";
+
+    if (password.length === 0) {
+
+        strength.innerHTML = "NOT CHECKED";
+        message.innerHTML = "Enter a password to check its strength.";
+
+    } else if (score <= 2) {
+
+        strength.innerHTML = "WEAK";
+        percentage = 25;
+        color = "#ff4545";
+        message.innerHTML = "Your Password is weak.";
+
+    } else if (score === 3) {
+
+        strength.innerHTML = "MEDIUM";
+        percentage = 50;
+        color = "#ffc107";
+        message.innerHTML = "Your Password is medium.";
+
+    } else if (score === 4) {
+
+        strength.innerHTML = "STRONG";
+        percentage = 75;
+        color = "#00bfff";
+        message.innerHTML = "Great! Your Password is strong.";
+
+    } else {
+
+        strength.innerHTML = "VERY STRONG";
+        percentage = 100;
+        color = "#32e65a";
+        message.innerHTML = "Excellent! Your Password is very strong.";
+
+    }
+
+    progress.style.width = percentage + "%";
+    progress.style.backgroundColor = color;
+
+    progressBar.setAttribute("aria-valuenow", percentage);
+
+    // PASSWORD REQUIREMENTS
+
+    const checks = [
+        {
+            id: "length",
+            ok: password.length >= 8,
+            text: "At least 8 characters"
+        },
+        {
+            id: "upp",
+            ok: /[A-Z]/.test(password),
+            text: "At least one uppercase letter (A-Z)"
+        },
+        {
+            id: "low",
+            ok: /[a-z]/.test(password),
+            text: "At least one lowercase letter (a-z)"
+        },
+        {
+            id: "num",
+            ok: /[0-9]/.test(password),
+            text: "At least one number (0-9)"
+        },
+        {
+            id: "sep",
+            ok: /[^A-Za-z0-9]/.test(password),
+            text: "At least one special character (!@#$%)"
+        }
+    ];
+
+    checks.forEach(function(check) {
+
+        const item = document.getElementById(check.id);
+
+        if (check.ok) {
+            item.innerHTML = "&#10004; " + check.text;
+            item.style.color = "#32e65a";
+        } else {
+            item.innerHTML = "&#10008; " + check.text;
+            item.style.color = "#ffffff";
+        }
+
+    });
+
+}
+</script>
+
 </body>
 </html>
